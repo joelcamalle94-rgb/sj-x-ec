@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SJ x EC | Siempre Juntos x Ecuador - Sourcing Gateway</title>
+    <!-- Importando Montserrat (Fuente Oficial) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+        /* COLORES Y ESTILOS OFICIALES (Ref: image_0.png) */
+        :root {
+            --black-header: #0A0A0A;
+            --black-body: #1A1A1A;
+            --gold-dark: #D4AF37;
+            --gold-light: #F2D58A;
+            --white: #FFFFFF;
+        }
+
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f4f4f4; 
+            color: var(--black-body); 
+            scroll-behavior: smooth;
+        }
+
+        /* CABECERA (HEADER) */
+        header { 
+            background-color: var(--black-header); 
+            color: var(--white); 
+            padding: 15px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 2px solid var(--gold-dark);
+            position: fixed;
+            width: 90%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo-container { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+        }
+        
+        .logo-text { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: var(--white); 
+            text-decoration: none; 
+            letter-spacing: 2px;
+        }
+        
+        .logo-text span {
+            color: var(--gold-dark);
+        }
+
+        .tagline { 
+            font-size: 10px; 
+            color: var(--gold-dark); 
+            margin-top: 2px; 
+            letter-spacing: 2px; 
+            text-transform: uppercase;
+        }
+        
+        .nav-links a { 
+            color: var(--white); 
+            text-decoration: none; 
+            margin-left: 20px; 
+            font-weight: 400; 
+            font-size: 14px; 
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover { 
+            color: var(--gold-dark); 
+        }
+
+        .cta-whatsapp {
+            background-color: var(--gold-dark);
+            color: var(--black-header);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 12px;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+        
+        /* BANNER PRINCIPAL (HERO) - Usando tu frase oficial */
+        .hero { 
+            /* Fondo con imagen de Ecuador y productos */
+            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1616616053303-9bb699a74426?q=80&w=1600') no-repeat center center/cover; 
+            color: var(--white); 
+            text-align: center; 
+            padding: 150px 5% 120px; 
+            border-bottom: 5px solid var(--gold-dark);
+        }
+        
+        .hero h1 { 
+            font-size: 50px; 
+            font-weight: 800;
+            margin-bottom: 20px; 
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: var(--gold-dark);
+        }
+        
+        .btn-hero { 
+            background-color: var(--gold-dark); 
+            color: var(--black-header); 
+            padding: 15px 35px; 
+            text-decoration: none; 
+            font-size: 14px; 
+            font-weight: 800; 
+            border-radius: 30px; 
+            text-transform: uppercase;
+            margin-top: 20px;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 2px solid var(--gold-dark);
+        }
+
+        .btn-hero:hover {
+            background-color: transparent;
+            color: var(--gold-dark);
+        }
+        
+        /* SECCIÓN DE PRODUCTOS (MVP) */
+        .container { 
+            padding: 60px 5% 100px; 
+            margin-top: 80px;
+        }
+        
+        .section-title { 
+            font-size: 28px; 
+            font-weight: 800;
+            color: var(--black-header); 
+            border-bottom: 3px solid var(--gold-dark); 
+            padding-bottom: 10px; 
+            margin-bottom: 40px; 
+            display: inline-block; 
+            text-transform: uppercase;
+        }
+        
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+            gap: 30px; 
+        }
+        
+        .product-card { 
+            background: var(--white); 
+            padding: 20px; 
+            border-radius: 4px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            text-align: center; 
+            transition: transform 0.3s, box-shadow 0.3s; 
+            border: 1px solid #eee;
+            position: relative;
+        }
+        
+        .product-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+            border-color: var(--gold-light);
+        }
+
+        .trace-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(212, 175, 55, 0.2);
+            color: var(--gold-dark);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 10px;
+        }
+        
+        .product-img { 
+            width: 100%; 
+            height: 220px; 
+            object-fit: cover; 
+            border-radius: 2px; 
+            margin-bottom: 15px; 
+        }
+        
+        .product-title { 
+            font-size: 16px; 
+            font-weight: 800;
+            color: var(--black-header); 
+            margin: 10px 0; 
+            height: 40px; 
+            overflow: hidden;
+        }
+        
+        .product-price { 
+            font-size: 18px; 
+            color: var(--black-body); 
+            font-weight: 800; 
+            margin-bottom: 20px;
+        }
+        
+        .btn-add { 
+            background-color: var(--black-header); 
+            color: var(--gold-dark);
+            border: 2px solid var(--black-header); 
+            padding: 12px 20px; 
+            width: 100%; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-weight: 800; 
+            text-transform: uppercase;
+            font-size: 12px;
+            transition: all 0.3s; 
+            text-decoration: none;
+            display: block;
+        }
+        
+        .btn-add:hover { 
+            background-color: var(--gold-dark); 
+            color: var(--black-header);
+            border-color: var(--gold-dark);
+        }
+        
+        /* PIE DE PÁGINA */
+        footer { 
+            background-color: var(--black-header); 
+            color: var(--white); 
+            text-align: center; 
+            padding: 30px; 
+            font-size: 12px;
+            border-top: 2px solid var(--gold-dark);
+        }
+        
+        footer span { 
+            color: var(--gold-dark); 
+            font-weight: 800; 
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--gold-dark);
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA -->
+    <header>
+        <div class="logo-container">
+            <a href="#" class="logo-text">SJ <span>x</span> EC</a>
+            <span class="tagline">Siempre Juntos x Ecuador</span>
+        </div>
+        <div class="nav-links">
+            <a href="#productos">Catálogo B2B</a>
+            <a href="https://wa.me/593XXXXXXXXX">Vender</a> <!-- REEMPLAZA X CON TU WHATSAPP -->
+            <a href="https://forms.gle/TU_FORMULARIO_AQUÍ">Contacto</a> <!-- REEMPLAZA CON TU GOOGLE FORM -->
+            <a href="https://wa.me/593984314749" class="cta-whatsapp">WhatsApp Urgent</a> <!-- CTA URGENTE -->
+        </div>
+    </header>
+
+    <!-- BANNER PRINCIPAL (HERO) -->
+    <div class="hero">
+        <h1>Un Solo <span>Ecuador</span>, Sin Fronteras.</h1>
+        <p style="font-size: 18px; max-width: 600px; margin: 0 auto 20px; font-weight: 400;">Catálogo Piloto de Exportación: Conectando directamente con productores certificados.</p>
+        <a href="#productos" class="btn-hero">Explora Ecuador &rarr;</a>
+    </div>
+
+    <!-- PRODUCTOS CLAVE -->
+    <div class="container" id="productos">
+        <h2 class="section-title">Frutas y Vegetales de Exportación (FOB)</h2>
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <div class="trace-tag">📍 Traceable Origin</div>
+                <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=400" alt="Banano" class="product-img">
+                <h3 class="product-title">Banano Cavendish Premium</h3>
+                <p class="product-price">Cotizar FOB</p>
+                <!-- ENLACE A TU FORMULARIO O WHATSAPP -->
+                <a href="https://forms.gle/TU_FORMULARIO_AQUÍ?text=Cotización%20Banano%20Cavendish" class="btn-add">Solicitar Cotización</a>
+            </div>
+
+            <div class="product-card">
+                <div class="trace-tag">📍 Traceable Origin</div>
+                <img src="https://images.unsplash.com/photo-1622484211148-52b313da6043?q=80&w=400" alt="Cacao" class="product-img">
+                <h3 class="product-title">Cacao Arriba Fino de Aroma</h3>
+                <p class="product-price">Cotizar FOB</p>
+                <a href="https://forms.gle/TU_FORMULARIO_AQUÍ?text=Cotización%20Cacao%20Arriba" class="btn-add">Solicitar Cotización</a>
+            </div>
+
+            <div class="product-card">
+                <div class="trace-tag">📍 Traceable Origin</div>
+                <img src="https://images.unsplash.com/photo-1601002621743-739c9fde9b8e?q=80&w=400" alt="Pitahaya" class="product-img">
+                <h3 class="product-title">Pitahaya Amarilla Premium</h3>
+                <p class="product-price">Cotizar FOB</p>
+                <a href="https://forms.gle/TU_FORMULARIO_AQUÍ?text=Cotización%20Pitahaya%20Amarilla" class="btn-add">Solicitar Cotización</a>
+            </div>
+
+            <div class="product-card">
+                <div class="trace-tag">📍 Traceable Origin</div>
+                <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?q=80&w=400" alt="Café" class="product-img">
+                <h3 class="product-title">Café de Especialidad Tostado</h3>
+                <p class="product-price">Cotizar FOB</p>
+                <a href="https://forms.gle/TU_FORMULARIO_AQUÍ?text=Cotización%20Café%20Especialidad" class="btn-add">Solicitar Cotización</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <a href="#" class="footer-logo">SJ <span>x</span> EC</a>
+        <p>&copy; 2026 <span>SJ x EC</span>. Catálogo Piloto de Exportación.</p>
+        <p style="font-size: 10px; color: #888;">Desarrollado con orgullo en Ecuador.</p>
+    </footer>
+
+</body>
+</html>
